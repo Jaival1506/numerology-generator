@@ -29,9 +29,9 @@ def generate_numerology_report(first, middle, last, birth_year):
     # STRUCTURE FOR EXCEL
     # -------------------------
     columns = {
-        first: f_col,
-        middle: m_col,
-        last: l_col
+        first.strip().title(): f_col,
+        middle.strip().title(): m_col,
+        last.strip().title(): l_col
     }
 
     # -------------------------

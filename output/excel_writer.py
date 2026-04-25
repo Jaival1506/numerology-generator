@@ -6,7 +6,7 @@ def build_excel_bytes(name, columns, sequences, years):
     buffer = BytesIO()
 
     with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-        first, middle, last = name.split()
+        first, middle, last = [x.strip().title() for x in name.split()]
 
         # --- Name Analysis ---
         def create_name_df(part):
