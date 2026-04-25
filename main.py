@@ -1,7 +1,7 @@
 from core.name_logic import generate_pattern_column, name_to_numbers, cumulative_sum
 from core.sequence_logic import get_sequences
 from core.year_prediction import generate_year_sequence
-from output.excel_writer import write_to_excel
+from output.excel_writer import build_excel_bytes
 
 
 def generate_numerology_report(first, middle, last, birth_year):
@@ -46,15 +46,11 @@ def generate_numerology_report(first, middle, last, birth_year):
     years = generate_year_sequence(birth_year, 30)
 
     # -------------------------
-    # EXPORT
+    # EXPORT (IN-MEMORY)
     # -------------------------
-    file_path = write_to_excel(
+    return build_excel_bytes(
         name=f"{first} {middle} {last}",
-        nums=None,
-        cumsum=None,
         columns=columns,
         sequences=sequences,
         years=years
     )
-
-    return file_path
